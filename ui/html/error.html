@@ -1,0 +1,14 @@
+{{template "base" .}}
+{{define "title"}} Error page {{end}}
+{{define "main"}}
+<head>
+    <link rel="icon" type="image/png" href="/static/images/error.ico">
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-message">{{.Message}}</h1>
+        <h2 class="error-status">{{.Status}}</h2>
+    <img src="/static/images/cry.gif" style="max-width: 100%; height: auto;">
+    <div>
+</body>
+{{end}}

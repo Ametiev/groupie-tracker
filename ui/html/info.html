@@ -1,0 +1,51 @@
+{{template "base" .}}
+{{define "title"}}{{.Name}} - Groupie Tracker{{end}}
+{{define "main"}}
+<head>
+    <link rel="icon" type="image/png" href="/static/images/info.ico">
+</head>
+<div class="child">
+    <img src="{{.Image}}" alt="{{.Name}}" class="artist-image">
+    <div class="artist-details">
+        <h1 class="artist-name">{{.Name}}</h1>
+        <div class="artist-info-item">
+            <strong class="artist-info-label">First Album: </strong>
+            <span class="artist-info-value">{{.FirstAlbum}}</span>
+        </div>
+        <div class="artist-info-item">
+            <strong class="artist-info-label">Creation Date: </strong>
+            <span class="artist-info-value">{{.CreationDate}}</span>
+        </div>
+     <div class="artist-info-item">
+  {{if .Solo}}
+    <strong class="artist-info-label">Full Name:</strong> 
+    <span class="artist-info-value">{{index .Members 0}}</span>
+  {{else}}
+    <strong class="artist-info-label">Members:</strong>
+    <span class="artist-info-value">
+      {{range $i, $member := .Members}}
+        {{if $i}}, {{end}}{{.}}
+      {{end}}
+    </span>
+  {{end}}
+</div>
+<div class="artist-info-item">
+    <strong class="artist-info-label bigger-text">Concert Locations: </strong>
+    <div class="artist-concert-locations">
+      {{range $location, $date := .DatesLocation}}
+      <div class="artist-concert-location">
+        <h4 class="artist-concert-location-title colored-text">{{$location}}</h4>
+        <ul class="artist-concert-dates">
+          {{range $date}}
+          <li class="artist-concert-date">{{.}}</li>
+          {{end}}
+        </ul>
+      </div>
+      {{end}}
+    </div>
+  </div>
+  
+    </div>
+</div>
+
+{{end}}

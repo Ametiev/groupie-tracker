@@ -1,0 +1,17 @@
+{{template "base" .}}
+
+{{define "title"}} Home page {{end}}
+
+<head>
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico">
+</head>
+
+{{define "main"}}
+<div class="image-container">
+{{range .}} 
+<a href="/info?id={{.ID}}">  
+    <img src="{{.Image}}" alt="image" class="hpai">
+</a>
+{{end}}
+</div>
+{{end}}
